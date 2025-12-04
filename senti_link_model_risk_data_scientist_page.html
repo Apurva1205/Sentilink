@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Apurva Chavan · Model Risk Data Scientist for SentiLink</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Application microsite for Model Risk Data Scientist at SentiLink." />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #02081b;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.14);
+      --accent-2: #38bdf8;
+      --text: #f9fafb;
+      --text-soft: #9ca3af;
+      --border-soft: #1f2937;
+      --card-bg: #020617;
+      --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.7);
+      --radius-xl: 18px;
+      --radius-lg: 12px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #0b1120 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 880px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .tagline {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid var(--border-soft);
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-soft);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .link-btn span {
+      font-size: 14px;
+      margin-right: 6px;
+    }
+
+    .link-btn:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.7);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.3fr);
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-left h1 {
+      font-size: clamp(32px, 4vw, 40px);
+      margin: 4px 0 12px;
+    }
+
+    .hero-left h1 span {
+      background: linear-gradient(135deg, #22c55e, #38bdf8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-soft);
+      max-width: 540px;
+    }
+
+    .hero-sub strong {
+      color: #e5e7eb;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 24px;
+    }
+
+    .hero-chip {
+      padding: 5px 12px;
+      font-size: 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-soft);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      padding: 9px 16px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: linear-gradient(135deg, #22c55e, #38bdf8);
+      color: #f9fafb;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.9);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 1);
+    }
+
+    .btn-ghost {
+      padding: 9px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-soft);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent-2);
+      color: var(--text);
+    }
+
+    .hero-right {
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.25), transparent 60%),
+                  radial-gradient(circle at bottom, rgba(34, 197, 94, 0.18), transparent 65%),
+                  var(--bg-soft);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right-title {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-right-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(55, 65, 81, 0.7);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 14px 14px 10px;
+      margin-bottom: 10px;
+    }
+
+    .hero-right-card h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+    }
+
+    .hero-right-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .badge {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px dashed rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 880px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .card {
+      border-radius: var(--radius-xl);
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid var(--border-soft);
+      padding: 18px 18px 16px;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.7);
+    }
+
+    .card + .card {
+      margin-top: 12px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .card h4 {
+      margin: 0 0 4px;
+      font-size: 13px;
+      color: var(--text-soft);
+      font-weight: 500;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0 10px;
+    }
+
+    .pill-mini {
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(30, 64, 175, 0.35);
+      border: 1px solid rgba(129, 140, 248, 0.7);
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    li + li {
+      margin-top: 4px;
+    }
+
+    .highlight {
+      color: #e5e7eb;
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    footer span {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <div class="tagline">Application Microsite · Model Risk Data Scientist</div>
+        <div class="pill" title="Remote · United States">
+          <span class="pill-dot"></span>
+          <span>Apurva Ravikar Chavan · Data Scientist / ML Engineer · Remote (US)</span>
+        </div>
+      </div>
+      <div class="links">
+        <a class="link-btn" href="mailto:apurvachavan125@gmail.com">
+          <span>✉</span>Email
+        </a>
+        <a class="link-btn" href="tel:+12034104412">
+          <span>☎</span>Call
+        </a>
+        <a class="link-btn" href="https://github.com/Apurva1205" target="_blank" rel="noreferrer">
+          <span>🐙</span>GitHub
+        </a>
+        <a class="link-btn" href="https://www.linkedin.com/in/apurva-ravikar-chavan" target="_blank" rel="noreferrer">
+          <span>in</span>LinkedIn
+        </a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <p class="tagline">Why SentiLink & Why Me</p>
+        <h1>
+          Turning <span>model risk</span> into
+a competitive advantage.
+        </h1>
+        <p class="hero-sub">
+          I’m a Data Scientist / ML Engineer who loves working where
+          <strong>statistics, governance, and fraud risk</strong> meet production ML.
+          SentiLink’s mission to bring deep understanding and follow-through to identity
+          resonates strongly with how I already work: build reliable Python rails,
+          obsess over metrics, and never ship a model we don’t fully understand.
+        </p>
+
+        <div class="hero-chip-row">
+          <div class="hero-chip">Python · Pandas · NumPy · SQL</div>
+          <div class="hero-chip">Model monitoring & drift</div>
+          <div class="hero-chip">Governance & documentation</div>
+          <div class="hero-chip">Fraud & anomaly patterns</div>
+          <div class="hero-chip">Storytelling with data</div>
+        </div>
+
+        <div class="cta-row">
+          <a href="https://apurva1205.github.io" target="_blank" rel="noreferrer">
+            <button class="btn-primary">See more of my work</button>
+          </a>
+          <a href="#fit">
+            <button class="btn-ghost">How I’d support model risk at SentiLink →</button>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-right">
+        <div class="hero-right-title">SentiLink, in my own words</div>
+        <div class="hero-right-card">
+          <h3>Identity & fraud, with real-world stakes</h3>
+          <p style="font-size: 13px; color: var(--text-soft); margin: 0;">
+            Your products sit at the heart of whether institutions can trust a transaction.
+            That demands <span class="highlight">robust models, transparent behavior, and healthy paranoia</span>
+            about data shifts and adversaries.
+          </p>
+          <div class="hero-right-metrics">
+            <div class="badge">Real-time APIs</div>
+            <div class="badge">Model stability & quality</div>
+          </div>
+        </div>
+
+        <div class="hero-right-card">
+          <h3>Model risk as a first-class citizen</h3>
+          <p style="font-size: 13px; color: var(--text-soft); margin: 0;">
+            I enjoy building the rails: metrics, dashboards, challenger models and
+            anomaly detection that make risk visible early—before something breaks
+            in production or with a regulator.
+          </p>
+          <div class="hero-right-metrics">
+            <div class="badge">Follow Through</div>
+            <div class="badge">Deep Understanding</div>
+            <div class="badge">Do Something Smart</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <main>
+      <div class="column-left">
+        <section id="fit">
+          <div class="section-title">How I’d contribute as a Model Risk Data Scientist</div>
+          <div class="card">
+            <h3>1. Build and own the model performance rails</h3>
+            <ul>
+              <li>
+                Design clear, business-aligned <span class="highlight">stability, performance,
+                and fairness metrics</span> for fraud and identity models.
+              </li>
+              <li>
+                Implement Python pipelines (Pandas/NumPy/SQL) to compute metrics
+                on live and historical data, with reproducible notebooks and scripts.
+              </li>
+              <li>
+                Surface metrics via BI tools / dashboards so risk, product, and
+                leadership can see exactly how models are behaving.
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>2. Partner with Strategic Financial Partners & governance</h3>
+            <ul>
+              <li>
+                Act as a technical point of contact who can explain <span class="highlight">what a
+                model is doing and why</span> in plain language, backed by solid analysis.
+              </li>
+              <li>
+                Answer questions around development procedures, validation, and
+                monitoring with clarity and humility.
+              </li>
+              <li>
+                Help partners interpret stability analyses, segment-level behavior,
+                and trade-offs between risk, approval rates, and fairness.
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>3. Automate detection of issues before they become incidents</h3>
+            <ul>
+              <li>
+                Build anomaly detection and challenger-model frameworks that flag
+                <span class="highlight">data drift, input distribution shifts, and suspicious segments</span>.
+              </li>
+              <li>
+                Encode data-driven “gap analyses” into jobs that run on a schedule
+                and alert when thresholds are breached.
+              </li>
+              <li>
+                Log and visualize failure cases so engineers, data scientists, and
+                risk teams can quickly debug and respond.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">Why I’m excited about SentiLink</div>
+          <div class="card">
+            <ul>
+              <li>
+                You work on <span class="highlight">identity and fraud</span>—domains where model risk
+                is not academic; it directly impacts people’s lives and the
+                financial system.
+              </li>
+              <li>
+                Your values (Follow Through, Deep Understanding, Do Something Smart)
+                align with how I already operate: I don’t just run analyses, I
+                close the loop and document decisions.
+              </li>
+              <li>
+                I’m motivated by complex, open-ended problems where the right
+                answer is <strong>careful analysis + concrete action</strong>, not
+                just more dashboards.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <div class="column-right">
+        <section>
+          <div class="section-title">Relevant experience & projects</div>
+
+          <div class="card">
+            <h3>Time-series & risk-style modeling</h3>
+            <h4>Python · Pandas · NumPy · forecasting</h4>
+            <div class="pill-row">
+              <div class="pill-mini">Stability metrics</div>
+              <div class="pill-mini">Error decomposition</div>
+              <div class="pill-mini">Scenario analysis</div>
+            </div>
+            <ul>
+              <li>
+                Built and evaluated forecasting models for energy demand and other
+                time-series data, emphasizing stability and robustness rather than
+                just point accuracy.
+              </li>
+              <li>
+                Developed evaluation pipelines that compare models over time,
+                across segments, and under stress-type scenarios.
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>LLM-based model evaluation & monitoring</h3>
+            <h4>Python · embeddings · structured evals</h4>
+            <div class="pill-row">
+              <div class="pill-mini">Behavior audits</div>
+              <div class="pill-mini">Segmented performance</div>
+              <div class="pill-mini">Drift checks</div>
+            </div>
+            <ul>
+              <li>
+                On my AI Resume Enhancer project, I tracked model behavior across
+                different roles, industries, and seniority levels to ensure
+                recommendations remained consistent and fair.
+              </li>
+              <li>
+                Built embedding-based analyses to detect when input distributions
+                change (e.g., new skill trends, job formats) and when models
+                need refresh.
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Communication & governance</h3>
+            <h4>Stakeholder updates · clear documentation</h4>
+            <div class="pill-row">
+              <div class="pill-mini">Readable reports</div>
+              <div class="pill-mini">Decision logs</div>
+              <div class="pill-mini">Partner-facing explainer</div>
+            </div>
+            <ul>
+              <li>
+                Documented model designs, assumptions, limitations, and monitoring
+                plans for academic and industry stakeholders.
+              </li>
+              <li>
+                Comfortable presenting findings to both technical and business
+                audiences, translating statistical detail into real risk and
+                business impact.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">Quick facts for this role</div>
+          <div class="card">
+            <ul>
+              <li><span class="highlight">Most recent company:</span> TCS Research & Innovation (Machine Learning Engineer)</li>
+              <li><span class="highlight">Most recent title:</span> Machine Learning Engineer / Data Scientist</li>
+              <li><span class="highlight">LinkedIn:</span> linkedin.com/in/apurva-ravikar-chavan</li>
+              <li><span class="highlight">Eligibility:</span> Legally authorized to work in the US on F-1 OPT; will require future sponsorship.</li>
+              <li><span class="highlight">Location:</span> Currently in the United States; open to fully remote work.</li>
+              <li><span class="highlight">Heard about this role:</span> Wellfound job search.</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <span>Thank you for considering my application. I’d love to help SentiLink deepen its understanding of model behavior and build rails that keep your identity products safe, stable, and trusted.</span>
+    </footer>
+  </div>
+</body>
+</html>
