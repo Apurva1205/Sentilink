@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Apurva Chavan · LLM Growth Automation for Bizwise</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Application microsite for Senior Software Engineer, Growth Automation (LLM/Backend) at Bizwise." />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.1);
+      --text: #f9fafb;
+      --text-soft: #9ca3af;
+      --border-soft: #1f2937;
+      --card-bg: #0f172a;
+      --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.5);
+      --chip-bg: rgba(148, 163, 184, 0.12);
+      --chip-border: rgba(148, 163, 184, 0.4);
+      --radius-xl: 18px;
+      --radius-lg: 12px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #111827 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .tagline {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-soft);
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.9);
+    }
+
+    .links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-soft);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .link-btn span {
+      font-size: 14px;
+      margin-right: 6px;
+    }
+
+    .link-btn:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.6);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .hero-left h1 {
+      font-size: clamp(32px, 4vw, 40px);
+      margin: 4px 0 12px;
+    }
+
+    .hero-left h1 span {
+      background: linear-gradient(120deg, #a855f7, #4f46e5, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-soft);
+      max-width: 540px;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 24px;
+    }
+
+    .hero-chip {
+      padding: 5px 12px;
+      font-size: 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-soft);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      padding: 9px 16px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: linear-gradient(135deg, #4f46e5, #22c55e);
+      color: #f9fafb;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.8);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-ghost {
+      padding: 9px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-soft);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .hero-right {
+      background: radial-gradient(circle at top, rgba(79, 70, 229, 0.2), transparent 60%),
+                  radial-gradient(circle at bottom, rgba(34, 197, 94, 0.16), transparent 65%),
+                  var(--bg-soft);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right-title {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-right-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(55, 65, 81, 0.7);
+      background: rgba(15, 23, 42, 0.92);
+      padding: 14px 14px 10px;
+      margin-bottom: 10px;
+    }
+
+    .hero-right-card h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+    }
+
+    .hero-right-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .badge {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 880px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .card {
+      border-radius: var(--radius-xl);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--border-soft);
+      padding: 18px 18px 16px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card + .card {
+      margin-top: 12px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .card h4 {
+      margin: 0 0 4px;
+      font-size: 13px;
+      color: var(--text-soft);
+      font-weight: 500;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0 10px;
+    }
+
+    .pill-mini {
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    li + li {
+      margin-top: 4px;
+    }
+
+    .highlight {
+      color: #e5e7eb;
+    }
+
+    .column-right .card {
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    footer span {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <div class="tagline">Application Microsite · Senior Software Engineer, Growth Automation (LLM/Backend)</div>
+        <div class="pill" title="Open to remote roles in North America">
+          <span class="pill-dot"></span>
+          <span>Apurva Ravikar Chavan · AI / ML Engineer · Remote (US)</span>
+        </div>
+      </div>
+      <div class="links">
+        <a class="link-btn" href="mailto:apurvachavan125@gmail.com">
+          <span>✉</span>Email
+        </a>
+        <a class="link-btn" href="tel:+12034104412">
+          <span>☎</span>Call
+        </a>
+        <a class="link-btn" href="https://github.com/Apurva1205" target="_blank" rel="noreferrer">
+          <span>🐙</span>GitHub
+        </a>
+        <a class="link-btn" href="https://www.linkedin.com/in/apurva-ravikar-chavan" target="_blank" rel="noreferrer">
+          <span>in</span>LinkedIn
+        </a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <p class="tagline">Why Bizwise & Why Me</p>
+        <h1>
+          Building <span>LLM-powered growth engines</span><br />
+          that actually move revenue.
+        </h1>
+        <p class="hero-sub">
+          I’m a Data Scientist / AI Engineer who loves the messy intersection of
+          <span class="highlight">scraping, enrichment, async systems, and LLM orchestration</span>.
+          I may not have 5+ official “Senior” years yet, but I’ve been doing the work:
+          owning pipelines, shipping agents, and obsessing over correctness, rate limits and conversion.
+        </p>
+
+        <div class="hero-chip-row">
+          <div class="hero-chip">LLM agents & evaluators</div>
+          <div class="hero-chip">RAG & vector stores</div>
+          <div class="hero-chip">Async queues & retries</div>
+          <div class="hero-chip">Web scraping & enrichment</div>
+          <div class="hero-chip">Metrics-driven experiments</div>
+        </div>
+
+        <div class="cta-row">
+          <a href="https://apurva1205.github.io" target="_blank" rel="noreferrer">
+            <button class="btn-primary">View more projects</button>
+          </a>
+          <a href="#fit">
+            <button class="btn-ghost">How I’d own your growth engine →</button>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-right">
+        <div class="hero-right-title">Bizwise, translated into my language</div>
+        <div class="hero-right-card">
+          <h3>Automated Growth Engine</h3>
+          <p style="font-size: 13px; color: var(--text-soft); margin: 0;">
+            Think: resilient TypeScript/Node workers pulling in leads, enriching with 3rd-party APIs,
+            and handing clean payloads to LLM agents that decide <span class="highlight">what to say, where, and when</span>.
+          </p>
+          <div class="hero-right-metrics">
+            <div class="badge">Async jobs · queues · retries</div>
+            <div class="badge">Deliverability & rate-limit aware</div>
+          </div>
+        </div>
+
+        <div class="hero-right-card">
+          <h3>LLM Orchestration</h3>
+          <p style="font-size: 13px; color: var(--text-soft); margin: 0;">
+            I’ve been building multi-agent systems and RAG flows around GPT-class models:
+            tools, guardrails, JSON outputs, and evals—not just “call the API and hope”.
+          </p>
+          <div class="hero-right-metrics">
+            <div class="badge">Agents & tools</div>
+            <div class="badge">Eval suites & telemetry</div>
+          </div>
+        </div>
+
+        <div class="hero-right-metrics">
+          <div class="badge">Remote · North America friendly hours</div>
+          <div class="badge">Happy to go deep on a tech screen</div>
+        </div>
+      </aside>
+    </section>
+
+    <main>
+      <div class="column-left">
+        <section id="fit">
+          <div class="section-title">How I’d contribute at Bizwise</div>
+          <div class="card">
+            <h3>1. Own the automated growth pipeline end-to-end</h3>
+            <ul>
+              <li>
+                Design <span class="highlight">scrapers and workers</span> that reliably capture data from target sources,
+                respecting robots.txt, rate limits, and anti-bot controls.
+              </li>
+              <li>
+                Normalize and enrich records in Postgres (or warehouse) so that every LLM agent
+                receives a clean, well-structured context.
+              </li>
+              <li>
+                Encode business constraints in code: when we are allowed to reach out, which
+                channels (SMS / email / web), and when to back off.
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>2. Build LLM agents that are eval-driven, not vibes-driven</h3>
+            <ul>
+              <li>
+                Wrap LLMs with <span class="highlight">tools, guardrails, and JSON schemas</span> so agents
+                produce structured, measurable outputs—not just free-form text.
+              </li>
+              <li>
+                Use vector DBs (pgvector, Pinecone, etc.) to ground responses in facts
+                about companies, prior touchpoints, and ICP profiles.
+              </li>
+              <li>
+                Maintain eval suites to check for style, compliance, and conversion-proxy metrics
+                before rolling changes out to production.
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>3. Instrument, iterate, and harden</h3>
+            <ul>
+              <li>
+                Implement strong observability: structured logs, per-step latencies,
+                failure modes, and outcome dashboards, so we see where leads drop.
+              </li>
+              <li>
+                Run experiments (subject lines, messaging, channel combinations)
+                and track impact on open/reply/meeting-booked rates.
+              </li>
+              <li>
+                Continuously refactor and pay down tech debt as we discover patterns,
+                making the system cheaper and more robust over time.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">Why I’m applying despite the 5+ year bar</div>
+          <div class="card">
+            <ul>
+              <li>
+                I’ve been working as a <span class="highlight">full-stack ML / backend engineer</span>:
+                owning APIs, data flows, and model integrations—not just notebooks.
+              </li>
+              <li>
+                I already work with <span class="highlight">TypeScript/Node backends</span> (e.g., for a
+                real-time AI social-deduction game) and I’m comfortable in a high-ownership,
+                startup-like environment.
+              </li>
+              <li>
+                I care deeply about building <span class="highlight">systems that drive revenue</span>:
+                conversion, not just “cool demos”.
+              </li>
+              <li>
+                I’m ready for the intensity you describe—launch pushes, direct feedback,
+                and owning problems until they’re genuinely solved.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <div class="column-right">
+        <section>
+          <div class="section-title">Snapshots of relevant work</div>
+
+          <div class="card">
+            <h3>AI Resume Enhancer · LLM-powered ranking & outreach</h3>
+            <h4>Python · FastAPI · embeddings · GPT-style LLMs</h4>
+            <div class="pill-row">
+              <div class="pill-mini">Job/resume scraping & parsing</div>
+              <div class="pill-mini">Vector search & scoring</div>
+              <div class="pill-mini">Suggestion generation</div>
+            </div>
+            <ul>
+              <li>
+                Built a pipeline that ingests resumes & job descriptions, extracts key features,
+                and computes embedding-based similarity scores.
+              </li>
+              <li>
+                Wrapped LLMs in strict JSON schemas to generate targeted, actionable suggestions
+                instead of unstructured advice.
+              </li>
+              <li>
+                Designed the project specifically to feel like a <span class="highlight">growth engine</span>
+                for candidates: helping them convert into interviews faster.
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>AI-driven multi-agent system (Werewolf-style game)</h3>
+            <h4>TypeScript/Node · WebSockets · LLM agents</h4>
+            <div class="pill-row">
+              <div class="pill-mini">Event-driven backend</div>
+              <div class="pill-mini">Real-time state & memory</div>
+              <div class="pill-mini">Agent orchestration</div>
+            </div>
+            <ul>
+              <li>
+                Co-built a backend where multiple LLM agents play social-deduction roles
+                (Host, Wolves, Seer) in real time with human players.
+              </li>
+              <li>
+                Implemented <span class="highlight">state machines, timers, and message routing</span>
+                over websockets—similar concerns to orchestrating multi-step growth workflows.
+              </li>
+              <li>
+                Designed data schemas and telemetry to analyze agent behavior and player engagement.
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Low-resource NMT · English ↔ Belarusian</h3>
+            <h4>BERT encoder + GPT-2 decoder · PyTorch</h4>
+            <div class="pill-row">
+              <div class="pill-mini">Transformers</div>
+              <div class="pill-mini">Training at scale</div>
+              <div class="pill-mini">Eval & error analysis</div>
+            </div>
+            <ul>
+              <li>
+                Built a translation model using a transformer-based base architecture,
+                focusing on correctness under data scarcity.
+              </li>
+              <li>
+                Carefully tuned training, logging and evaluation—skills that transfer
+                directly to building reliable LLM flows for outreach.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">Quick facts</div>
+          <div class="card">
+            <ul>
+              <li><span class="highlight">Location:</span> East Coast (US) · fully remote, flexible hours with ≥4h ET overlap.</li>
+              <li><span class="highlight">Stack comfort:</span> TypeScript/Node, Python, Postgres, Docker, queues, vector DBs, LLM APIs.</li>
+              <li><span class="highlight">Work style:</span> write it down, ship small slices, measure, iterate, and harden.</li>
+              <li><span class="highlight">Why Bizwise:</span> I love the idea of treating growth as a product—where infra, data, and LLMs work together as one system.</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <span>Thank you for considering my application. I’d love to dive deeper into how I can help Bizwise scale its automated growth engine.</span>
+    </footer>
+  </div>
+</body>
+</html>
